@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "api rest avec node js application gestibank avec Android Studio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Isabelle97M/GestiBank-Android.git"
+  },
+  "author": "Isabelle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Isabelle97M/GestiBank-Android/issues"
+  },
+  "homepage": "https://github.com/Isabelle97M/GestiBank-Android#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4",
+    "require": "^2.4.20"
+  }
+}

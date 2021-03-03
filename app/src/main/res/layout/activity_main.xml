@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="571dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.685">
+
+        <TextView
+            android:id="@+id/titleHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
+            android:gravity="center_horizontal"
+            android:text="GESTIBANK"
+            android:textAlignment="center"
+            android:textColor="@color/purple_500"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/subtitleHome"
+            android:layout_width="295dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Bienvenue chez votre gestionnaire de transactions bancaires"
+            android:textAlignment="center"
+            android:textColor="@color/purple_700"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/logoHome"
+            android:layout_width="match_parent"
+            android:layout_height="212dp"
+            app:srcCompat="@mipmap/logo" />
+
+        <TextView
+            android:id="@+id/questionHome"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Que souhaitez-vous faire ? "
+            android:textAlignment="center"
+            android:textColor="@color/purple_700"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnCreation"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:onClick="callAccountCreation"
+            android:text="Créer un compte" />
+
+        <Button
+            android:id="@+id/btnConverter"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:onClick="callCurrencyConverter"
+            android:text="Convertir des devises" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

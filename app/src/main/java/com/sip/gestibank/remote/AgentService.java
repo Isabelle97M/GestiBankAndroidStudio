@@ -13,16 +13,16 @@ import retrofit2.http.PUT;
 
 public interface AgentService {
 
-    @GET("list/")
-    Call<List<Agent>> getAgent();
+    @GET("/agents/list")
+    Call<List<Agent>> getAgentsList();
 
-    @PUT("update/:matricule/")
+    @PUT("/agents/update/:matricule")
     Call<List<Agent>> putAgent();
 
-    @DELETE("delete/:matricule/")
+    @DELETE("/agents/delete/:matricule")
     Call<List<Agent>> deleteAgent();
 
-    @POST("add/")
+    @POST("/agents/add")
     Call<Agent> postAgent(@Body Agent agent);
 
 }

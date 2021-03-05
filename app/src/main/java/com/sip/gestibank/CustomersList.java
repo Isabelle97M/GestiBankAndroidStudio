@@ -10,7 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.sip.gestibank.models.Agent;
 import com.sip.gestibank.models.Customer;
+import com.sip.gestibank.remote.ApiUtils;
 import com.sip.gestibank.remote.CustomerService;
 
 import java.util.List;
@@ -22,47 +24,31 @@ import retrofit2.Response;
 public class CustomersList extends AppCompatActivity {
 
     CustomerService customerService;
-    List<Customer>list;
+    List<Customer> list;
     ListView listView;
-    Button btnDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customers_list);
 
-        btnDisplay = findViewById(R.id.btnDisplay);
-        listView = findViewById(R.id.listViewCustomers);
+        customerService = ApiUtils.getCustomerService();
 
-        btnDisplay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getCustomersList();
-            }
-        });
+        listView = findViewById(R.id.listCustomers);
 
-    }
-
-    public void getCustomersList(){
         Call<List<Customer>> call = customerService.getCustomers();
+
         call.enqueue(new Callback<List<Customer>>() {
             @Override
             public void onResponse(Call<List<Customer>> call, Response<List<Customer>> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
+                    System.out.println(response.body());
                     list = response.body();
-                    Log.i("Data: ", list.toString());
-                    StringBuffer buffer=new StringBuffer();
-                    for (Customer customer : list)
-                    {
-
-                        buffer.append("Nom: "+customer.getName()+"\n");
-                        buffer.append("Prénom: "+customer.getFirstname()+"\n\n");
-
-                    }
-                    showMessage("Customers List", buffer.toString());
-
-                    // listView.setAdapter(new UserAdapter(MainActivity.this, R.layout.list_user, list));
+                    listView.setAdapter(new CustomerListAdapter(CustomersList.this, list));
+                } else {
+                    System.out.println(response.code());
                 }
+
             }
 
             @Override
@@ -70,15 +56,9 @@ public class CustomersList extends AppCompatActivity {
                 Log.e("ERROR: ", t.getMessage());
             }
         });
+
     }
 
-    public void showMessage(String title,String message)
-    {
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.show();
-    }
 
-}
+
+    }

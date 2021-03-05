@@ -21,6 +21,7 @@ public class AgentsList extends AppCompatActivity {
 
     AgentService agentService;
     List<Agent> list;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,35 +30,30 @@ public class AgentsList extends AppCompatActivity {
 
         agentService = ApiUtils.getAgentService();
 
-        List<Agent> myAgentsList = getAgentsList();
-        final ListView listViewAgent = findViewById(R.id.listAgents);
-        listViewAgent.setAdapter(new AgentsListAdapter(this, myAgentsList));
+        listView = findViewById(R.id.listCustomers);
 
-    }
+            Call<List<Agent>> call = agentService.getAgentsList();
 
-
-    private List<Agent> getAgentsList(){
-        Call<List<Agent>> call = agentService.getAgent();
-        call.enqueue(new Callback<List<Agent>>() {
-            @Override
-            public void onResponse(Call<List<Agent>> call, Response<List<Agent>> response) {
-                if(response.isSuccessful()){
-                    list = response.body();
-                    int sizeList = list.size();
-                    System.out.println("Longueur du fichier Agent : " + sizeList);
-                    //listViewAgent.setAdapter(new AgentsListAdapter(AgentsList.this, list));
-                } else {
+            call.enqueue(new Callback<List<Agent>>() {
+                @Override
+                public void onResponse(Call<List<Agent>> call, Response<List<Agent>> response) {
+                    if(response.isSuccessful()){
+                        System.out.println(response.body());
+                        list = response.body();
+                        listView.setAdapter(new AgentsListAdapter(AgentsList.this, list));
+                    }else {
+                        System.out.println(response.code());
+                    }
 
                 }
-            }
+                @Override
+                public void onFailure(Call<List<Agent>> call, Throwable t) {
+                    Log.e("ERROR: ", t.getMessage());
+                }
+            });
 
-            @Override
-            public void onFailure(Call<List<Agent>> call, Throwable t) {
-                Log.e("ERROR: ", t.getMessage());
-            }
-        });
 
-        return list;
+
     }
 
 

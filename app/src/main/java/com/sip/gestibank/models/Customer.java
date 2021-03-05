@@ -33,6 +33,11 @@ public class Customer {
     @Expose
     private String password;
 
+    @SerializedName("agent")
+    @Expose
+    private String agent;
+
+
     public Customer(){
 
     };
@@ -46,6 +51,7 @@ public class Customer {
         this.role = "CUSTOMER";
         this.status = "WAITING";
         this.password = "";
+        this.agent = "NOBOBY";
     }
 
     public String getFirstname() {
@@ -107,6 +113,14 @@ public class Customer {
         this.password = password;
     }
 
+    public String getAgent() {
+        return agent;
+    }
+
+    public void setAgent(String agent) {
+        this.agent = agent;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
@@ -117,6 +131,7 @@ public class Customer {
                 ", role='" + role + '\'' +
                 ", status='" + status + '\'' +
                 ", password='" + password + '\'' +
+                ", agent='" + agent + '\'' +
                 '}';
     }
 }

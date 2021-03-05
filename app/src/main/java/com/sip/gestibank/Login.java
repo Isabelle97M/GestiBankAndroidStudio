@@ -55,51 +55,62 @@ public class Login extends AppCompatActivity {
       call.enqueue(new Callback<Users>() {
           @Override
           public void onResponse(Call<Users> call, Response<Users> response) {
-              if(response.isSuccessful()){
-                  System.out.println(response.body());
+              if (response.isSuccessful()) {
+                  //System.out.println(response.body());
                   user = response.body();
-                  if(user.getEmail().equals(userEmail) && user.getPassword().equals(userPassword))
-                  {
-                      role = user.getRole();
+                  if (user != null) {
+                      if (user.getEmail().equals(userEmail) && user.getPassword().equals(userPassword)) {
+                          role = user.getRole();
+
+                          switch (role) {
+
+                              case "AGENT":
+                                  Intent intentAgent = new Intent(Login.this, AgentHome.class);
+                                  intentAgent.putExtra("username", user.getName() + " " + user.getFirstname());
+                                  startActivity(intentAgent);
+
+                                  break;
+
+                              case "CUSTOMER":
+                                  Intent intentCustomer = new Intent(Login.this, CustomerHome.class);
+                                  intentCustomer.putExtra("username", user.getName() + " " + user.getFirstname());
+                                  startActivity(intentCustomer);
+
+                                  break;
+
+                              case "ADMINISTRATOR":
+                                  Intent intentAdmin = new Intent(Login.this, AdministratorHome.class);
+                                  intentAdmin.putExtra("username", user.getName() + " " + user.getFirstname());
+                                  startActivity(intentAdmin);
+
+                                  break;
+                              default:
+
+                          }
+
+                      } else {
+                          Toast.makeText(Login.this, "Email ou mot de passe incorrects !", Toast.LENGTH_SHORT).show();
+                      }
+
+                  } else {
+                      Toast.makeText(Login.this, "Identifiants inconnus !", Toast.LENGTH_SHORT).show();
                   }
-                  else
-                  {
-                      Toast.makeText(Login.this, "Login ou Password invalides", Toast.LENGTH_SHORT).show();
+                  } else{
+                      System.out.println(response.code());
                   }
 
-              }else {
-                  System.out.println(response.code());
-              }
 
           }
+
           @Override
           public void onFailure(Call<Users> call, Throwable t) {
               Log.e("ERROR: ", t.getMessage());
           }
       });
 
-
-      switch (role) {
-
-          case "AGENT" :
-              Intent intentAgent = new Intent(Login.this, AgentHome.class);
-              startActivity(intentAgent);
-              break;
-
-          case "CUSTOMER" :
-              Intent intentCustomer = new Intent(Login.this, CustomerHome.class);
-              startActivity(intentCustomer);
-              break;
-
-          case "ADMINISTRATOR" :
-              Intent intentAdmin = new Intent(Login.this, AdministratorHome.class);
-              startActivity(intentAdmin);
-              break;
-          default:
-
-      }
-
   }
+
+
 
     /*public void showMessage(String title,String message)
     {

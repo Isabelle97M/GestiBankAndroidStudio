@@ -28,4 +28,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void callLoginPage(View view){
+        Intent i = new Intent(getApplicationContext(), Login.class);
+        startActivity(i);
+    }
+
 }

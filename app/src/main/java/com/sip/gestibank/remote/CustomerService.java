@@ -11,15 +11,15 @@ import retrofit2.http.POST;
 
 public interface CustomerService {
 
-    @GET("list/")
+    @GET("/customers/list")
     Call<List<Customer>> getCustomers();
 
-    @GET("list/attente")
+    @GET("/customers/list/attente")
     Call<List<Customer>> getCustomersWaiting();
 
-    @GET("list/valide")
+    @GET("/customers/list/valide")
     Call<List<Customer>> getCustomersValidated();
 
-    @POST("add/")
+    @POST("/customers/add")
     Call<Customer> addCustomer(@Body Customer customer);
 }

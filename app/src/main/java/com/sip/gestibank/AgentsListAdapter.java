@@ -17,23 +17,23 @@ import java.util.List;
 
 public class AgentsListAdapter extends BaseAdapter {
 
-    private List<Agent> listAgent;
-    private LayoutInflater layoutInflater;
+    private  List<Agent> listData;
+    private  LayoutInflater layoutInflater;
     private Context context;
 
     public AgentsListAdapter(Context aContext, List<Agent> listData) {
         this.context = aContext;
-        this.listAgent = listData;
+        this.listData = listData;
         layoutInflater = LayoutInflater.from(aContext);
 
     }
     @Override
     public int getCount() {
-        return listAgent.size();
+        return listData.size();
     }
     @Override
     public Object getItem(int position) {
-        return listAgent.get(position);
+        return listData.get(position);
     }
     @Override
     public long getItemId(int position) {
@@ -51,22 +51,34 @@ public class AgentsListAdapter extends BaseAdapter {
                     convertView.findViewById(R.id.viewAgentFirstName);
             holder.agentMatricule = (TextView)
                     convertView.findViewById(R.id.viewAgentMatricule);
-            holder.btnAgentInfo = (Button)
-                    convertView.findViewById(R.id.btnAgentDetails);
+            /*holder.btnAgentInfo = (Button)
+                    convertView.findViewById(R.id.agentDetails);*/
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        Agent agent = this.listAgent.get(position);
-        holder.agentName.setText("Nom : " +agent.getName());
+        Agent agent = this.listData.get(position);
+        //System.out.println(listData.size());
+        holder.agentName.setText("Nom : " + agent.getName());
+        //System.out.println(agent.getName());
         holder.agentFirstName.setText("Prénom : " + agent.getFirstname());
         holder.agentMatricule.setText("Matricule : " + agent.getMatricule());
-        holder.btnAgentInfo.setOnClickListener(new View.OnClickListener() {
+        /*holder.btnAgentInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                StringBuffer buffer=new StringBuffer();
+                for (Agent agent : list)
+                {
 
+                    buffer.append("Name: "+user.getName()+"\n");
+                    buffer.append("Email: "+user.getEmail()+"\n\n");
+
+                }
+                showMessage("Clients List", buffer.toString());
+
+                listAgent.toString();
             }
-        });
+        });*/
 
         return convertView;
     }
@@ -75,7 +87,7 @@ public class AgentsListAdapter extends BaseAdapter {
         TextView agentName;
         TextView agentFirstName;
         TextView agentMatricule;
-        Button btnAgentInfo;
+        //Button btnAgentInfo;
     }
 
 

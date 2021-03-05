@@ -73,7 +73,7 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName4"
+                    android:id="@+id/editFirstNameCreation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -100,7 +100,7 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/editTextPhone2"
+                    android:id="@+id/editPhoneCreation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -127,7 +127,7 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/editTextTextEmailAddress2"
+                    android:id="@+id/editEmailCreation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -144,6 +144,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-condensed-medium"
+                android:onClick="newCustomerAccount"
                 android:text="Créer mon compte" />
 
             <LinearLayout
@@ -170,6 +171,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:onClick="callGoToAuthentification"
                     android:text="Cliquez ici"
                     android:textColor="@color/purple_500"
                     android:textSize="16sp"
@@ -181,7 +183,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/subtitleConverter"
+            android:id="@+id/subtitleLogin"
             android:layout_width="359dp"
             android:layout_height="32dp"
             android:layout_marginBottom="32dp"
@@ -207,7 +209,7 @@
             tools:layout_editor_absoluteY="16dp">
 
             <Button
-                android:id="@+id/goBackHomeCreation"
+                android:id="@+id/goBackHomeLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="callGoBackHomeCreation"
@@ -216,7 +218,7 @@
                 app:layout_row="0" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/logoLogin"
                 android:layout_width="92dp"
                 android:layout_height="86dp"
                 app:layout_column="0"
@@ -224,7 +226,7 @@
                 app:srcCompat="@mipmap/logo" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/titleLogin"
                 android:layout_width="262dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"

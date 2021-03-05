@@ -19,5 +19,9 @@ public class CurrencyConverter extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void callGoToAdminHome(View view){
+        Intent i = new Intent(getApplicationContext(), AdministratorHome.class);
+        startActivity(i);
+    }
 
 }

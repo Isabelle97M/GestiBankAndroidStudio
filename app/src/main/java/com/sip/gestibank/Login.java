@@ -42,6 +42,11 @@ public class Login extends AppCompatActivity {
 
     }
 
+    public void callGoHome(View view){
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
+
   public void dashboardUSer(View v) {
 
       userEmail = email.getText().toString();

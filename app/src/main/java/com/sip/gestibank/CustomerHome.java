@@ -2,7 +2,9 @@ package com.sip.gestibank;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class CustomerHome extends AppCompatActivity {
@@ -23,4 +25,10 @@ public class CustomerHome extends AppCompatActivity {
         nameAuth.setText(nameSession);
 
     }
+
+    public void callGoHome(View view){
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
+
 }

@@ -2,9 +2,11 @@ package com.sip.gestibank;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import android.view.View;
 import android.widget.ListView;
 
 import com.sip.gestibank.models.Agent;
@@ -56,6 +58,10 @@ public class AgentsList extends AppCompatActivity {
 
     }
 
+    public void callGoAdminHome(View view){
+        Intent i = new Intent(getApplicationContext(), AdministratorHome.class);
+        startActivity(i);
+    }
 
 }
 

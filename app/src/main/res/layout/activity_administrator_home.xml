@@ -220,11 +220,12 @@
             android:gravity="end" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnUnlockAdmin"
+            android:id="@+id/btnGoHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="true"
+            android:onClick="callGoHome"
             android:tint="@color/white"
             app:backgroundTint="@color/purple_500"
             app:fabSize="mini"

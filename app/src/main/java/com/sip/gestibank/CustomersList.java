@@ -3,12 +3,14 @@ package com.sip.gestibank;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.sip.gestibank.models.Agent;
 import com.sip.gestibank.models.Customer;
@@ -42,7 +44,6 @@ public class CustomersList extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Customer>> call, Response<List<Customer>> response) {
                 if (response.isSuccessful()) {
-                    System.out.println(response.body());
                     list = response.body();
                     listView.setAdapter(new CustomerListAdapter(CustomersList.this, list));
                 } else {
@@ -59,6 +60,10 @@ public class CustomersList extends AppCompatActivity {
 
     }
 
-
-
+    public void callGoAdminHome(View view){
+        Intent i = new Intent(getApplicationContext(), AdministratorHome.class);
+        startActivity(i);
     }
+
+
+}

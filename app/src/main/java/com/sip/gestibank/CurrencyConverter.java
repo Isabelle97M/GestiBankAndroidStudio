@@ -45,7 +45,7 @@ public class CurrencyConverter extends AppCompatActivity {
 
     }
 
-    public void callGoBackHomeCreation(View view){
+    public void callGoHomeConverter(View view){
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
     }

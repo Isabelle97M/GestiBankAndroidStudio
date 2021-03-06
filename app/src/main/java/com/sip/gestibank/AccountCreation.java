@@ -37,7 +37,7 @@ public class AccountCreation extends AppCompatActivity {
 
     }
 
-    public void callGoBackHomeCreation(View view){
+    public void callGoHomeCreation(View view){
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
     }

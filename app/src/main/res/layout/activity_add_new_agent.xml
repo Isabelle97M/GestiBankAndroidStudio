@@ -15,14 +15,15 @@
         app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.969">
+        app:layout_constraintVertical_bias="1.0">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnUnlockAdmin"
+            android:id="@+id/btnGoHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="true"
+            android:onClick="callGoAdminHome"
             android:tint="@color/white"
             app:backgroundTint="@color/purple_500"
             app:fabSize="mini"
@@ -212,9 +213,12 @@
             android:id="@+id/gridLayout2"
             android:layout_width="352dp"
             android:layout_height="86dp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="12dp"
-            tools:layout_editor_absoluteY="15dp">
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints">
 
             <ImageView
                 android:id="@+id/logoConverter"

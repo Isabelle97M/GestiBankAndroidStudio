@@ -28,6 +28,11 @@ public class AdministratorHome extends AppCompatActivity {
 
     }
 
+    public void callGoHome(View view){
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
+
     public void callAgentsList(View view) {
         Intent i = new Intent(getApplicationContext(), AgentsList.class);
         startActivity(i);

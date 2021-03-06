@@ -2,6 +2,7 @@ package com.sip.gestibank;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,11 @@ public class AddNewAgent extends AppCompatActivity {
         email =  findViewById(R.id.editEmailAgent);
         matricule = findViewById(R.id.editMatriculeAgent);
 
+    }
+
+    public void callGoAdminHome(View view){
+        Intent i = new Intent(getApplicationContext(), AdministratorHome.class);
+        startActivity(i);
     }
 
     public void addAgent(View v){

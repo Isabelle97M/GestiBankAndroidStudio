@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Isabelle97M/GestiBank-Android#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongodb": "^3.6.4",
     "require": "^2.4.20"

@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+//const cors = require("cors");
 
 app.use(express.json());
 
@@ -8,6 +9,13 @@ app.listen(
     90,
     ()=>{console.log("Serveur Express a l ecoute sur le port 90");}
 );
+
+/*var corsOptions = {
+    //origin: "http://localhost:4200"
+    origin: "*"
+  };*/
+
+//app.use(cors(corsOptions));
 
 // CONNEXION TO DATABASE MONGODB
 const MongoClient = require('mongodb').MongoClient;
@@ -22,7 +30,7 @@ MongoClient.connect(url, function(err, client) {
 // CUSTOMER CRUD REQUESTS
 
 // Get all clients by role's filter  
-app.get('/cusotmers/list/', (req,res) => {
+app.get('/customers/list', (req,res) => {
     db.collection('users').find({"role": "CUSTOMER"}).toArray(function(err, docs) {
         if (err) {
             console.log(err)
@@ -52,7 +60,7 @@ app.get('/customers/validated/list', (req,res) => {
       }) 
   })
 
-app.post('/customer/add/',  async (req,res) => {
+app.post('/customers/add',  async (req,res) => {
     try {
            const newCustomer = req.body
            const addedCustomer = await db.collection('users').insertOne(newCustomer)
@@ -63,11 +71,11 @@ app.post('/customer/add/',  async (req,res) => {
        } 
  })
 
- app.put('/customer/update/:phone/',  async (req,res) => {
+ app.put('/customers/update/:email',  async (req,res) => {
     try {
-        const phone = req.params.tel;
+        const email = req.params.email;
         const updateCustomer = req.body
-        const customer = await db.collection('users').replaceOne({phone, "role" : "CUSTOMER"},updateCustomer)
+        const customer = await db.collection('users').replaceOne({email, "role" : "CUSTOMER"},updateCustomer)
         res.status(200).json(customer)
     } catch (err) {
         console.log(err)
@@ -75,12 +83,34 @@ app.post('/customer/add/',  async (req,res) => {
     }
  })
 
+ app.delete('/customers/delete/:email',  async (req,res) => {
+    try {
+        const email = req.params.email
+        const customer = await db.collection('users').deleteOne({email})
+        res.status(200).json(customer)
+    } catch (err) {
+        console.log(err)
+        throw err
+    } 
+  })
 
+// ALL USERS
 
+app.get('/user/:email',  async (req,res) => {
+    try {
+        const email = req.params.email;
+        const user = await db.collection('users').findOne({email})
+        res.status(200).json(user)
+    } catch (err) {
+        console.log(err)
+        throw err
+    }
+ })
+ 
 
 // AGENT CRUD REQUESTS
 
-app.get('/agents/list/', (req,res) => {
+app.get('/agents/list', (req,res) => {
     db.collection('users').find({"role": "AGENT"}).toArray(function(err, docs) {
         if (err) {
             console.log(err)
@@ -90,7 +120,7 @@ app.get('/agents/list/', (req,res) => {
       }) 
   })
 
-app.post('/agent/add/',  async (req,res) => {
+app.post('/agents/add',  async (req,res) => {
     try {
            const newAgent = req.body
            const addedAgent = await db.collection('users').insertOne(newAgent)
@@ -101,7 +131,7 @@ app.post('/agent/add/',  async (req,res) => {
        } 
  })
 
-app.put('/agent/update/:matricule/',  async (req,res) => {
+app.put('/agents/update/:matricule',  async (req,res) => {
     try {
         const matricule = req.params.matricule;
         const updateAgent = req.body
@@ -120,7 +150,7 @@ app.put('/agent/update/:matricule/',  async (req,res) => {
 
 // ADMIN CRUD REQUESTS
 
-app.get('/admins/list/', (req,res) => {
+app.get('/admins/list', (req,res) => {
     db.collection('users').find({"role": "ADMINISTRATOR"}).toArray(function(err, docs) {
         if (err) {
             console.log(err)
@@ -130,7 +160,7 @@ app.get('/admins/list/', (req,res) => {
       }) 
   })
 
-app.post('/admin/add/',  async (req,res) => {
+app.post('/admins/add',  async (req,res) => {
     try {
            const newAdmin = req.body
            const addedAdmin = await db.collection('users').insertOne(newAdmin)
@@ -141,7 +171,7 @@ app.post('/admin/add/',  async (req,res) => {
        } 
  })
 
- app.put('/admin/update/:matricule/',  async (req,res) => {
+ app.put('/admins/update/:matricule',  async (req,res) => {
     try {
         const matricule = req.params.matricule;
         const updateAdmin = req.body

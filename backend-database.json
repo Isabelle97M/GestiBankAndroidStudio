@@ -1,0 +1,155 @@
+[{
+  "_id": {
+    "$oid": "603f233c8a2426720ab2c5ac"
+  },
+  "firstname": "Sandrine",
+  "name": "CLAMART",
+  "tel": "0676531221",
+  "email": "sandrine.clamart@gmail.com",
+  "role": "CUSTOMER",
+  "status": "VALIDATED",
+  "password": "sandrineclamart"
+},{
+  "_id": {
+    "$oid": "603f23b54584a868c4235402"
+  },
+  "firstname": "Julie",
+  "name": "DUPONT",
+  "tel": "0684938847",
+  "email": "julie.dupont@gmail.com",
+  "role": "CUSTOMER",
+  "status": "WAITING",
+  "password": null
+},{
+  "_id": {
+    "$oid": "603f23b54584a868c4235403"
+  },
+  "firstname": "Thomas",
+  "name": "STORM",
+  "tel": "0623449388",
+  "email": "thomas.storm@yahoo.com",
+  "role": "CUSTOMER",
+  "status": "VALIDATED",
+  "password": "pwdTSV2021"
+},{
+  "_id": {
+    "$oid": "603f23b54584a868c4235404"
+  },
+  "firstname": "Fred",
+  "name": "CLEMENT",
+  "tel": "0645629045",
+  "email": "fred.clément@gestibank.com",
+  "role": "AGENT",
+  "matricule": "202102",
+  "password": "pwdFCA2021"
+},{
+  "_id": {
+    "$oid": "603f23b54584a868c4235405"
+  },
+  "firstname": "Isabelle",
+  "name": "MATHIEU",
+  "tel": "0765894322",
+  "email": "isabelle.mathieu@gestibank.com",
+  "role": "ADMINISTRATOR",
+  "matricule": "202101",
+  "password": "pwdIMA2021"
+},{
+  "_id": {
+    "$oid": "603f61cdfb5a087bc3d68575"
+  },
+  "email": "c-landscape@gmail.com",
+  "firstname": "Charlotte",
+  "name": "LANDSCAPE",
+  "password": "",
+  "role": "CUSTOMER",
+  "status": "WAITING",
+  "tel": "0688787888"
+},{
+  "_id": {
+    "$oid": "603fa6c189cbd882e8a3a385"
+  },
+  "firstname": "Chloé",
+  "name": "BRIDGE",
+  "tel": "069964996200",
+  "email": "bridge.chloe@gestibank.com",
+  "role": "AGENT",
+  "matricule": "202103",
+  "password": "pwdCBA2021"
+},{
+  "_id": {
+    "$oid": "603fb34389cbd882e8a3a387"
+  },
+  "email": "c-oscar@orange.com",
+  "firstname": "OSCAR",
+  "name": "Caroline",
+  "password": "",
+  "role": "CUSTOMER",
+  "status": "WAITING",
+  "tel": "0699346578"
+},{
+  "_id": {
+    "$oid": "6041bfebedf43d2f321c88ea"
+  },
+  "firstname": "Ophélie",
+  "name": "DOS SANTOS",
+  "tel": "0788998808",
+  "email": "ophelie.dossantos@myemail.com",
+  "role": "CUSTOMER",
+  "status": "VALIDATED",
+  "password": "o.santos.o"
+},{
+  "_id": {
+    "$oid": "6041e2b1450ccb3416c155c9"
+  },
+  "firstname": "Lucie",
+  "name": "AUTRE",
+  "tel": "0788998899",
+  "email": "lucie.autre@gmail.com",
+  "role": "CUSTOMER",
+  "status": "WAITING",
+  "password": ""
+},{
+  "_id": {
+    "$oid": "6041e2e4450ccb3416c155ca"
+  },
+  "firstname": "Marco",
+  "name": "Polo",
+  "tel": "0644564355",
+  "email": "marco.polo@gestibank.com",
+  "role": "AGENT",
+  "matricule": "202104",
+  "password": "pwdMPA2021"
+},{
+  "_id": {
+    "$oid": "6041e2f4450ccb3416c155cb"
+  },
+  "firstname": "Elise",
+  "name": "TOME",
+  "tel": "0634226544",
+  "email": "tome.elise@gestibank.com",
+  "role": "ADMINISTRATOR",
+  "matricule": "202001",
+  "password": "pwdETA2021"
+},{
+  "_id": {
+    "$oid": "6041e73e2479863465e23b74"
+  },
+  "email": "gregoire.philis@gestibank.com",
+  "firstname": "PHILIS",
+  "matricule": "223345",
+  "name": "Grégoire",
+  "password": "",
+  "role": "AGENT",
+  "tel": "0799324432"
+},{
+  "_id": {
+    "$oid": "60423714cb37d445cec2b825"
+  },
+  "email": "tom.jerry@gestibank.com",
+  "firstname": "Jerry",
+  "matricule": "555555",
+  "name": "Tom",
+  "password": "",
+  "role": "AGENT",
+  "tel": "07777"
+}]

@@ -54,6 +54,18 @@ app.get('/customers/waiting/list', (req,res) => {
       }) 
   })
 
+  app.get('/customers/list/:agent',  async (req,res) => {
+      const agent = req.params.agent
+    db.collection('users').find({agent, "role": "CUSTOMER"}).toArray(function(err, docs) {
+        if (err) {
+            console.log(err)
+            throw err
+        }
+        res.status(200).json(docs)
+      }) 
+ })
+
+
 app.get('/customers/validated/list', (req,res) => {
     db.collection('users').find({"role": "CUSTOMER", "status" : "VALIDATED"}).toArray(function(err, docs) {
         if (err) {
@@ -80,28 +92,6 @@ app.post('/customers/add',  async (req,res) => {
            const addedCustomer = await db.collection('users').insertOne(newCustomer)
            res.status(200).json(addedCustomer)
 
-           var mailOptions = {
-            from: 'essai.mailing.dev@gmail.com',
-            to: email,
-            subject: 'Validation de création de compte GestiBank',
-            text: 'Bienvenue chez GestiBank' + '\n' 
-            + 'Votre gestionnaire de transcation bancaire en ligne. Vous venez de créer un compte de type : '
-            + '\n' + req.body.account + '.'
-            + '\n Vous pouvez désormais vous connecter sur votre espace client grâce à vos identifiants.'
-            + ' \n Votre identifiant est : ' 
-            + email
-            + '\n Votre mot de passe est : ' 
-            + password
-          };
-          
-// SEND VALIDATION E-MAIL : 
-transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  });
 
        } catch (err) {
            console.log(err)
@@ -121,24 +111,26 @@ transporter.sendMail(mailOptions, function(error, info){
     }
  })
 
- app.put('/customers/validationByAgent/:agent',  async (req,res) => {
+ app.put('/customers/validationByAgent/:email',  async (req,res) => {
     try {
-        const email = req.params.email;
         const updateCustomer = req.body;
-        const agent = req.body.agent;
+        const email = req.params.email;
+        const password = req.body.password;
         const customer = await db.collection('users').replaceOne({email, "role" : "CUSTOMER"},updateCustomer)
         res.status(200).json(customer)
 
         var mailOptions = {
             from: 'essai.mailing.dev@gmail.com',
             to: email,
-            subject: 'Affectation de votre compte GestiBank',
-            text: 'Bonjour,'  
-            + '\n Votre compte a bien été validé par Gestibank.' 
-            + '\n Votre agent est : '
-            + agent  + '.'
-            + 'Pour toutes questions, vous pouvez prendre contact avec votre agent.'
-            + 'Bien cordialement, GestiBank.'
+            subject: 'Validation de création de compte GestiBank',
+            text: "Bienvenue chez GestiBank" + "\r\n"
+            + "Votre gestionnaire de transcation bancaire en ligne. Vous venez de créer un compte de type : "
+            + "\r\n" + req.body.account + "."
+            + "\r\n" + "Vous pouvez désormais vous connecter sur votre espace client grâce à vos identifiants."
+            + "\r\n" + "Votre identifiant est :"
+            + email
+            + "\r\n" + "Votre mot de passe est :"
+            + password
           };
           
 // SEND VALIDATION E-MAIL : 
@@ -149,6 +141,7 @@ transporter.sendMail(mailOptions, function(error, info){
       console.log('Email sent: ' + info.response);
     }
   });
+
 
 // ERROR PUT CUSTOMER VALIDATION REQUEST :
     } catch (err) {
@@ -194,6 +187,9 @@ app.get('/agents/list', (req,res) => {
       }) 
   })
 
+
+ 
+
 app.post('/agents/add',  async (req,res) => {
     try {
            const newAgent = req.body
@@ -205,11 +201,11 @@ app.post('/agents/add',  async (req,res) => {
        } 
  })
 
-app.put('/agents/update/:matricule',  async (req,res) => {
+app.put('/agents/update/:email',  async (req,res) => {
     try {
-        const matricule = req.params.matricule;
+        const email = req.params.email;
         const updateAgent = req.body
-        const agent = await db.collection('users').replaceOne({"role" : "AGENT", matricule},updateAgent)
+        const agent = await db.collection('users').replaceOne({"role" : "AGENT", email},updateAgent)
         res.status(200).json(agent)
     } catch (err) {
         console.log(err)
@@ -217,7 +213,16 @@ app.put('/agents/update/:matricule',  async (req,res) => {
     }
  })
 
-
+ app.delete('/agents/delete/:email',  async (req,res) => {
+    try {
+        const email = req.params.email
+        const agent = await db.collection('users').deleteOne({email})
+        res.status(200).json(agent)
+    } catch (err) {
+        console.log(err)
+        throw err
+    } 
+  })
 
 
 
@@ -245,17 +250,28 @@ app.post('/admins/add',  async (req,res) => {
        } 
  })
 
- app.put('/admins/update/:matricule',  async (req,res) => {
+ app.put('/admins/update/:email',  async (req,res) => {
     try {
-        const matricule = req.params.matricule;
+        const email = req.params.email;
         const updateAdmin = req.body
-        const admin = await db.collection('users').replaceOne({"role" : "ADMINISTRATOR", matricule},updateAdmin)
+        const admin = await db.collection('users').replaceOne({"role" : "ADMINISTRATOR", email},updateAdmin)
         res.status(200).json(admin)
     } catch (err) {
         console.log(err)
         throw err
     }
  })
+
+ app.delete('/admins/delete/:email',  async (req,res) => {
+    try {
+        const email = req.params.email
+        const admin = await db.collection('users').deleteOne({email})
+        res.status(200).json(admin)
+    } catch (err) {
+        console.log(err)
+        throw err
+    } 
+  })
 
 
 

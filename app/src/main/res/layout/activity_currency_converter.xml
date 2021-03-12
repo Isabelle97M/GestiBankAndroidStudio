@@ -176,7 +176,7 @@
         android:background="#B2FFFFFF"
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center_horizontal"
-        android:text="Convertisseur de devises"
+        android:text="Conversion à partir du dollar"
         android:textAlignment="center"
         android:textColor="@color/purple_500"
         android:textSize="20sp"
@@ -184,7 +184,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.97" />
+        app:layout_constraintVertical_bias="0.963" />
 
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout3"

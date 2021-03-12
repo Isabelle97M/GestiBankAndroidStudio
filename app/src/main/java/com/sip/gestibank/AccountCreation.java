@@ -59,7 +59,7 @@ public class AccountCreation extends AppCompatActivity {
             @Override
             public void onResponse(Call<Customer> call, Response<Customer> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(AccountCreation.this, "Customer account created successfully!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountCreation.this, "Votre compte a été créé avec succès !", Toast.LENGTH_SHORT).show();
                 }
             }
 
